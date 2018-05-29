@@ -1,0 +1,91 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="app.css">
+</head>
+
+<body>
+    <header>
+        <div class="jumbotron">
+            <h1 class="display-4">Cost per unit calculator</h1>
+            <p class="lead">Do a calculation.</p>
+        </div>
+    </header>
+    <div id="app" class="container">
+        <div class="form-group">
+            <label for="cost">Cost (£)</label>
+            <input v-model="cost" type="number" name="cost" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="abv">ABV (%)</label>
+            <input v-model="abv" type="number" name="abv" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="volume">Volume</label>
+            <select v-model="volume" name="volume" class="form-control form-control-lg">
+                <option v-for="option in selectedVolume" v-bind:value="{ value: option.value, name: option.name }">
+                    {{ option.name }}
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <button v-on:click="calculate" class="btn btn-primary btn-lg">Calculate cost per unit</button>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <div class="alert alert-info">
+                    Cost per unit:
+                    <strong>{{ pricePerUnit }}</strong>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="alert alert-info">
+                    Total units: {{ totalUnits }}
+                </div>
+            </div>
+
+        </div>
+        <div v-if="showDrinkNameInput">
+            <div class="form-group">
+                <label for="drinkName">Name this drink</label>
+                <input v-model="drinkName" type="text" name="drinkName" class="form-control">
+            </div>
+            <div class="form-group">
+                <button v-on:click="addDrinkToList" type="button" class="btn btn-success btn-sm">Add drink to list</button>
+                <button v-on:click="clearDrinkList" type="button" class="btn btn-warning btn-sm">Clear list</button>
+            </div>
+        </div>
+        <div v-if="showTable" class="container">
+            <table class="table">
+                <tr>
+                    <th>Name of drink</th>
+                    <th>Volume</th>
+                    <th>Units</th>
+                    <th>Cost per unit</th>
+                </tr>
+                <tr v-for="drink in drinkList">
+                    <td>{{ drink.name }}</td>
+                    <td>{{ drink.volume }}</td>
+                    <td align="right">{{ drink.units }}</td>
+                    <td align="right">{{ drink.pricePerUnit }}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td align="right">Total units: {{ addUnits }}</th>
+                    <td></td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
