@@ -2,7 +2,7 @@ var app = new Vue({
     el: '#app',
     data: {
         totalUnits: 2.27,
-        pricePerUnit: '£2.20',
+        pricePerUnit: 2.20,
         cost: 5,
         abv: 4,
         volume: {
@@ -63,7 +63,7 @@ var app = new Vue({
     methods: {
         calculate: function () {
             this.totalUnits = Number(((this.volume.value * this.abv) / 1000).toFixed(2))
-            this.pricePerUnit = '£' + (this.cost / this.totalUnits).toFixed(2)
+            this.pricePerUnit = Number((this.cost / this.totalUnits).toFixed(2))
             this.showDrinkNameInput = true
         },
         addDrinkToList: function () {
@@ -75,6 +75,9 @@ var app = new Vue({
             this.drinkList = []
             this.showTable = false
             localStorage.removeItem('drinksList')
+        },
+        sortedArray: function () {
+            return this.drinkList.sort((a, b) => a.pricePerUnit > b.pricePerUnit )
         }
     },
     mounted() {

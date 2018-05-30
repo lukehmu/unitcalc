@@ -67,7 +67,7 @@
                     <th>Name of drink</th>
                     <th>Volume</th>
                     <th>Units</th>
-                    <th>Cost per unit</th>
+                    <th><a v-on:click="sortedArray" class="badge badge-secondary">Cost per unit</a></th>
                 </tr>
                 <tr v-for="drink in drinkList">
                     <td>{{ drink.name }}</td>
@@ -82,7 +82,9 @@
                     <td></td>
                 </tr>
             </table>
-
+            <div class="form-group">
+                <button v-on:click="sortedArray" type="button" class="btn btn-success btn-sm">Sort drinks</button>
+            </div>
         </div>
     </div>
     <script src="app.js"></script>
