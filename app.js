@@ -49,7 +49,8 @@ var app = new Vue({
         drinkList: [],
         drinkName: 'My first beer',
         showTable: false,
-        showDrinkNameInput: false
+        showDrinkNameInput: false,
+        costPerUnitSortDesc: true
     },
     computed: {
         addUnits: function () {
@@ -77,7 +78,14 @@ var app = new Vue({
             localStorage.removeItem('drinksList')
         },
         sortedArray: function () {
-            return this.drinkList.sort((a, b) => a.pricePerUnit > b.pricePerUnit )
+            if (this.costPerUnitSortDesc) {
+                this.costPerUnitSortDesc = false
+                return this.drinkList.sort( (a, b) => a.pricePerUnit > b.pricePerUnit )
+            } else {
+                this.costPerUnitSortDesc = true
+                return this.drinkList.sort( (a, b) => a.pricePerUnit < b.pricePerUnit )
+            }
+            
         }
     },
     mounted() {
