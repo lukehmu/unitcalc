@@ -58,7 +58,14 @@ var app = new Vue({
             Object.entries(this.drinkList).forEach(([key, drink]) => {
                 total.push(drink.units) // the value of the current key.
             });
-            return total.reduce(function(total, num){ return total + num }, 0);
+            return Number((total.reduce(function(total, num){ return total + num }, 0)).toFixed(2))
+        },
+        addDrinkCost: function () {
+            total = []
+            Object.entries(this.drinkList).forEach(([key, drink]) => {
+                total.push(drink.cost) // the value of the current key.
+            });
+            return Number(total.reduce(function(total, num){ return total + num }, 0))
         }
     },
     methods: {
@@ -68,7 +75,7 @@ var app = new Vue({
             this.showDrinkNameInput = true
         },
         addDrinkToList: function () {
-            this.drinkList.push({ name: this.drinkName,pricePerUnit: this.pricePerUnit,volume: this.volume.name, units: this.totalUnits })
+            this.drinkList.push({ name: this.drinkName, pricePerUnit: this.pricePerUnit, volume: this.volume.name, units: this.totalUnits, cost: this.cost })
             this.drinkName = ''
             this.showTable = true
         },

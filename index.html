@@ -62,30 +62,30 @@
                 <button v-on:click="clearDrinkList" type="button" class="btn btn-warning btn-sm">Clear list</button>
             </div>
         </div>
-        <div v-if="showTable" class="container">
+        <div v-if="showTable" class="container table-responsive">
             <table class="table">
                 <tr>
                     <th>Name of drink</th>
                     <th>Volume</th>
-                    <th>Units</th>
-                    <th>Cost per unit <button v-on:click="sortedArray" type="button" class="btn btn-success btn-sm ">Sort <i v-bind:class="{ 'fas fa-chevron-up': costPerUnitSortDesc, 'fas fa-chevron-down': costPerUnitSortDesc == false }"></i></button></th>
+                    <th class="text-right">Drink cost</th>
+                    <th class="text-right">Units</th>
+                    <th class="text-right">Cost per unit <button v-on:click="sortedArray" type="button" class="btn btn-success btn-sm ">Sort <i v-bind:class="{ 'fas fa-chevron-up': costPerUnitSortDesc, 'fas fa-chevron-down': costPerUnitSortDesc == false }"></i></button></th>
                 </tr>
                 <tr v-for="drink in drinkList">
                     <td>{{ drink.name }}</td>
                     <td>{{ drink.volume }}</td>
+                    <td align="right"><span v-if="drink.cost">£</span>{{ drink.cost }}</td>
                     <td align="right">{{ drink.units }}</td>
-                    <td align="right">{{ drink.pricePerUnit }}</td>
+                    <td align="right"><span v-if="drink.pricePerUnit">£</span>{{ drink.pricePerUnit }}</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td></td>
+                    <td align="right">Total cost: <span v-if="addDrinkCost">£</span>{{ addDrinkCost }}</th>
                     <td align="right">Total units: {{ addUnits }}</th>
                     <td></td>
                 </tr>
             </table>
-            <div class="form-group">
-                
-            </div>
         </div>
     </div>
     <script src="app.js"></script>
