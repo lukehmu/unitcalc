@@ -22,9 +22,20 @@
     </header>
     <div id="app" class="container">
         <div id="form-group" v-for="question in questions">
-            <input-text :label="question.label" :newAtt="question.name"></input-text>
+            <div v-if="question.type === 'InputText'">
+                <input-text :label="question.label" :id="question.name"></input-text>
+            </div>
+            <div v-else-if="question.type === 'InputTextarea'">
+                <input-textarea :label="question.label" :id="question.name"></input-textarea>
+            </div>
+            <div v-else-if="question.type === 'InputSelect'">
+                <input-select :label="question.label" :id="question.name" :options="question.options"></input-select>
+            </div>
+            <div v-else-if="question.type === 'InputRadio'">
+                <input-radio :label="question.label" :name="question.name" :options="question.options"></input-radio>
+            </div>
         </div>
-        
+
     </div>
     <script src="bs.js"></script>
 </body>
