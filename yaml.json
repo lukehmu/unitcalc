@@ -1,0 +1,105 @@
+{
+    "options": {
+        "paper_size": "A4",
+        "paper_orientation": "Portrait"
+    },
+    "inputs": [{
+            "name": "region",
+            "label": "Select your region",
+            "type": "InputSelect",
+            "selected_value": "uk-headquarters",
+            "options": {
+                "": "Please select",
+                "uk-headquarters": "UK Headquarters",
+                "eastern-england": "Eastern England",
+                "midlands": "Midlands",
+                "northern-england": "Northern England",
+                "south-east-england": "South East England",
+                "south-west-england": "South West England",
+                "northern-ireland": "Northern Ireland",
+                "scotland-headquarters": "Scotland Headquarters",
+                "east-scotland": "East Scotland",
+                "north-scotland": "North Scotland",
+                "south-and-west-scotland": "South and West Scotland",
+                "scotland-patrons": "RSPB Scotland Patrons"
+            }
+        },
+        {
+            "name": "address-heading",
+            "label": "Address Heading",
+            "type": "InputText",
+            "extra_params": {
+                "placeholder": "Address Heading",
+                "data-character-limit": 30,
+                "value": "UK Headquarters"
+            }
+        },
+        {
+            "name": "address-text",
+            "label": "Address",
+            "type": "InputTextarea",
+            "extra_params": {
+                "placeholder": "Address",
+                "cols": 60,
+                "rows": 2,
+                "data-character-limit": 100,
+                "value": "The Lodge\nPotton Road\nSandy\nBedfordshire\nSG19 2DL\n"
+            }
+        },
+        {
+            "name": "address-tel",
+            "label": "Telephone",
+            "type": "InputText",
+            "extra_params": {
+                "placeholder": "Telephone",
+                "data-character-limit": 15,
+                "value": "01767 680551"
+            }
+        },
+        {
+            "name": "address-fax",
+            "label": "Fax",
+            "type": "InputText",
+            "extra_params": {
+                "placeholder": "Fax",
+                "data-character-limit": 15,
+                "value": "01767 692365"
+            }
+        },
+        {
+            "name": "address-facebook",
+            "label": "Facebook URL",
+            "type": "InputSelect",
+            "selected_value": "RSPBLoveNature",
+            "options": {
+                "include_file": "facebook-options.yaml"
+            }
+        },
+        {
+            "name": "address-twitter",
+            "label": "Twitter account",
+            "type": "InputSelect",
+            "selected_value": "@Natures_Voice",
+            "options": {
+                "include_file": "twitter-options.yaml"
+            }
+        },
+        {
+            "name": "bleed",
+            "label": "Add bleed area?",
+            "type": "InputRadio",
+            "options": [{
+                    "value": "no-bleed",
+                    "label": "No (if you are printing yourself)",
+                    "extra_params": {
+                        "checked": "checked"
+                    }
+                },
+                {
+                    "value": "bleed",
+                    "label": "Yes (if printing professionally)"
+                }
+            ]
+        }
+    ]
+}
