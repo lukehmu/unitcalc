@@ -22,8 +22,16 @@ var app = new Vue({
                 value: 256
             },
             {
+                name: 'Third pint',
+                value: 189
+            },
+            {
                 name: 'Can',
                 value: 330
+            },
+            {
+                name: '500ml bottle',
+                value: 500
             },
             {
                 name: 'Small wine',
