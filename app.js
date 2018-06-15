@@ -24,10 +24,14 @@ var app = new Vue({
             {
                 name: 'Third pint',
                 value: 189
+          },
+            {
+                name: 'Can 330',
+                value: 330
             },
             {
-                name: 'Can',
-                value: 330
+                name: 'Can 440',
+                value: 440
             },
             {
                 name: '500ml bottle',
