@@ -8,9 +8,19 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
         crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+        crossorigin="anonymous">
     <link rel="stylesheet" href="app.css">
     <link rel="manifest" href="manifest.json">
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker
+                .register('sw.js')
+                .then(function () {
+                    console.log("Service Worker Registered");
+                });
+        }
+    </script>
 </head>
 
 <body>
@@ -71,21 +81,28 @@
                     <th>Volume</th>
                     <th class="text-right">Drink cost</th>
                     <th class="text-right">Units</th>
-                    <th class="text-right">Cost per unit <button v-on:click="sortedArray" type="button" class="btn btn-success btn-sm ">Sort <i v-bind:class="{ 'fas fa-chevron-up': costPerUnitSortDesc, 'fas fa-chevron-down': costPerUnitSortDesc == false }"></i></button></th>
+                    <th class="text-right">Cost per unit
+                        <button v-on:click="sortedArray" type="button" class="btn btn-success btn-sm ">Sort
+                            <i v-bind:class="{ 'fas fa-chevron-up': costPerUnitSortDesc, 'fas fa-chevron-down': costPerUnitSortDesc == false }"></i>
+                        </button>
+                    </th>
                 </tr>
                 <tr v-for="drink in drinkList">
                     <td>{{ drink.name }}</td>
                     <td>{{ drink.volume }}</td>
-                    <td align="right"><span v-if="drink.cost">£</span>{{ drink.cost }}</td>
+                    <td align="right">
+                        <span v-if="drink.cost">£</span>{{ drink.cost }}</td>
                     <td align="right">{{ drink.units }}</td>
-                    <td align="right"><span v-if="drink.pricePerUnit">£</span>{{ drink.pricePerUnit }}</td>
+                    <td align="right">
+                        <span v-if="drink.pricePerUnit">£</span>{{ drink.pricePerUnit }}</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td></td>
-                    <td align="right">Total cost: <span v-if="addDrinkCost">£</span>{{ addDrinkCost }}</th>
-                    <td align="right">Total units: {{ addUnits }}</th>
-                    <td></td>
+                    <td align="right">Total cost:
+                        <span v-if="addDrinkCost">£</span>{{ addDrinkCost }}</th>
+                        <td align="right">Total units: {{ addUnits }}</th>
+                            <td></td>
                 </tr>
             </table>
         </div>
